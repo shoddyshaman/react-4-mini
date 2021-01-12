@@ -11,15 +11,17 @@ class Post extends Component {
     };
   }
   componentDidMount() {
+    const {id} = this.props.match.params;
     // This is where you would make an axios call to a server in a fullstack application
     // but for today we'll be just be filtering an array of dummy data
-    let post = posts.find(post => post.id === 2);
+    let post = posts.find(post => post.id === +id);
     this.setState({
       title: post.title,
       content: post.content
     });
   }
   render() {
+    console.log(this.props)
     const { title, content } = this.state;
     return (
       <div className="Post">
